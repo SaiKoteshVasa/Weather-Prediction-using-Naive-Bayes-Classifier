@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <title>Weather Prediction</title>
+
+    <style>
+        .main{
+            display: flex;
+            flex-direction: column;
+            border: 5px solid white;
+            border-radius: 10px;
+            margin: 5rem auto;
+            width: 25rem;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(53, 51, 51, 0.804);
+        }
+        input{
+            margin: 0.5rem;
+            width: 18rem;
+            height: 1.5rem;
+            border-radius: 5px;
+            border: none;
+            padding:0.3rem 0.5rem;
+        }
+        button{
+            border: none;
+            margin-top: 2rem;
+            border-radius: 5px;
+            width: 6rem;
+            background-color: rgb(60, 86, 234);
+            color:white;
+            padding:0.4rem
+        }
+        button:hover {
+            background-color: green;
+            color: white;
+        }
+        .row{
+            margin-top: 1rem;
+            color:#ffffff
+        }
+        span{
+            color: rgb(132, 246, 106);
+        }
+        body{
+            background-image:url('../static/images/background.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        h1{
+            color: rgb(255, 252, 252);
+        }
+    </style>
+</head>
+<body id="thebody">
+    <div class="main">
+        <h1>Weather Prediction</h1>
+  
+        <form action="/predict" method="POST"> 
+            
+            
+            <input type="text" name="month" placeholder="Enter Month"><br>
+            <input type="text" name="precp" placeholder="Enter Precipitation"><br>
+            <input type="text" name="temp_max" placeholder="Enter Max Temperature"><br>
+            <input type="text" name="temp_min" placeholder="Enter Min Temperature"><br>
+            <input type="text" name="wind" placeholder="Enter Wind"><br>
+    
+            <button >Predict</button>
+    
+        </form>
+    
+        <div class="row">
+    
+            {% if prediction %}
+            <h2>Predicted weather is : <span>{{prediction}}</span><h2>
+            {% endif %}
+    
+        </div>
+    </div>
+</body>
+</html>
